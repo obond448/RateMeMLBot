@@ -1,6 +1,6 @@
 import cv2, sys
 from PIL import Image
-import torch
+
 import torch.nn as nn
 from torchvision import datasets, models, transforms
 import matplotlib.pyplot as plt
