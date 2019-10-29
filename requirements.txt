@@ -2,7 +2,7 @@ praw
 cloudinary
 numpy
 matplotlib
-http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl
-torchvision
+torchvision==0.4.1 -f https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==1.2.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 Pillow
 opencv-python
