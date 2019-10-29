@@ -26,7 +26,7 @@ def run(inputs):
     model.num_classes = num_classes
     
     #model = TheModelClass(*args, **kwargs)
-    dict_load = torch.load(r".\modelAttract.pt")
+    dict_load = torch.load(r"modelAttract.pt")
     model.load_state_dict(dict_load["model_state_dict"])
     model.eval()
     
