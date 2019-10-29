@@ -1,0 +1,8 @@
+praw
+cloudinary
+numpy
+matplotlib
+torch
+torchvision
+Pillow
+opencv-python
