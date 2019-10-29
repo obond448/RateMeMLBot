@@ -14,7 +14,7 @@ def imshow(data_img):
     plt.imshow(np.transpose(data_img, (1,2,0)))
     
 
-file = r"C:\Users\Otto\Documents\1.Projects\Celebrity\imageME2.jpg"
+#file = r"C:\Users\Otto\Documents\1.Projects\Celebrity\imageME2.jpg"
 
 
 def run(inputs):
@@ -38,7 +38,7 @@ def run(inputs):
         ])
     
     #inputs = Image.open(file)
-    inputs = transform(inputs)
+    inputs = transform(inputs)  
     inputs = inputs.view(1,3,224,224)
     
     with torch.no_grad():
