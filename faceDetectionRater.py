@@ -1,6 +1,6 @@
 import cv2, sys
 from PIL import Image
-
+import torch
 import torch.nn as nn
 from torchvision import datasets, models, transforms
 import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ def run(inputs):
     model.num_classes = num_classes
     
     #model = TheModelClass(*args, **kwargs)
-    dict_load = torch.load(r"C:\Users\Otto\Documents\1.Projects\Celebrity\modelAttract.pt")
+    dict_load = torch.load(r".\modelAttract.pt")
     model.load_state_dict(dict_load["model_state_dict"])
     model.eval()
     
