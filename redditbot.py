@@ -61,7 +61,7 @@ tag = "rater"
 #subreddit to post to
 subreddit_posts = reddit.subreddit('RateMeMLRater')
 
-for submission in sub.new(limit=3): #time_filter = "week",
+for submission in sub.top(limit=15, time_filter = "day"): #time_filter = "week",
     
     # if submission.score < MIN_SCORE or submission.id in posts_replied_to:
     #     continue #skip
