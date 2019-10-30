@@ -1,3 +1,5 @@
+#THIS FILE WAS NOT CREATED BY OTTO BOND
+
 import os
 import sys
 
@@ -39,6 +41,7 @@ def upload_files(file, tag):
     )
     print("Fill 200x150 url: " + url)
     print("")
+    return url
     
 def cleanup():
     response = resources_by_tag(DEFAULT_TAG)

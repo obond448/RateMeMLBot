@@ -1,7 +1,7 @@
 import praw
 import os
 import urllib
-from faceDetectionRater import *
+from faceDetectionRater import rate_faces_save
 import cloudinary
 import imageupload
 import re
@@ -18,19 +18,22 @@ def rate_img(img):
         return None
 
 
-def determine_gender(title):
+def determine_age_gender(title):
     pattern = re.compile("([0-9][0-9])[mMFf]")
     pattern2 = re.compile("[mMFf]([0-9][0-9])")
     m = pattern.search(title)
     m2 = pattern2.search(title)
     gender = ""
+    age = ""
     if m:
         #print(m.group(0), submission.id)
         gender = m.group(0)[2].lower()
+        age = m.group(0)[0:2]
     if m2:
         #print(m2.group(0), submission.id)
         gender = m2.group(0)[0].lower()
-    return gender
+        age = m2.group(0)[1:3]
+    return age, gender
 
 
 reddit = praw.Reddit("bot1",  user_agent='rater user agent')
@@ -55,13 +58,17 @@ cloudinary.config(
     )
 tag = "rater"
 
-for submission in sub.top(limit=25, time_filter = "week"): #time_filter = "week",
+#subreddit to post to
+subreddit_posts = reddit.subreddit('RateMeMLRater')
+
+for submission in sub.new(limit=3): #time_filter = "week",
     
-    if submission.score < MIN_SCORE or submission.id in posts_replied_to:
-        continue #skip
+    # if submission.score < MIN_SCORE or submission.id in posts_replied_to:
+    #     continue #skip
         
     url = submission.url
     subid = submission.id
+    age, gender = determine_age_gender(submission.title)
     print(submission.title)
     # if (determine_gender(submission.title) != "m"):
     #     print("SKIP GENDER")
@@ -76,10 +83,20 @@ for submission in sub.top(limit=25, time_filter = "week"): #time_filter = "week"
         rate_faces_save("{}.jpg".format(subid), "rated-{}.jpg".format(subid))
         
         if (os.path.exists("rated-{}.jpg".format(subid))):
-            imageupload.upload_files("rated-{}.jpg".format(subid), tag)
+            
+            #upload to cloudinary
+            #url = imageupload.upload_files("rated-{}.jpg".format(subid), tag)
+            
+            #post to subreddit
+            try :
+                posted_sub = subreddit_posts.submit_image("[{}{}] {}".format(gender,age,subid), 
+                                                          "rated-{}.jpg".format(subid), timeout = 15)
+            except praw.exceptions.ClientException: 
+                print("Failed to return submission URL")
         
+            os.remove("rated-{}.jpg".format(subid))
         
-        
+        os.remove("{}.jpg".format(subid))
         
         #print(rate_img("{}.jpg".format(subid)))
         #ratings = rate_img("{}.jpg".format(subid))-
