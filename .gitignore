@@ -1,0 +1,7 @@
+praw.ini
+reddit.py
+**/__pycache__
+posts_replied_to.txt
+TODO.txt
+cloudinary_python.txt
+FaceDetect-master.zip
