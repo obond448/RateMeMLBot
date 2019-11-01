@@ -11,6 +11,8 @@ The bot is hosted on heroku and run automatically at specified times.
 
 ## Interpretation of number output
 
+Numbers at each detected face can be interpreted as the model's determined likelihood that that face is in the "attractive" set.
+
 ## Limitations
 
 Predictions by the NN are unreliable for many reasons:
