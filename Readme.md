@@ -1,4 +1,4 @@
-# RateMe Machine Learning Bot by Otto Bond
+# RateMe Machine Learning Bot
 
 This bot uses a pytorch squeezenet neural network that has undergone finetune training on the CelebA (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset to classify face portraits into "attractive" and "not attractive" categories. 
 
@@ -23,3 +23,6 @@ Predictions by the NN are unreliable for many reasons:
     * The final criteria described by the data, is therefore: Would the person classifying the data believe this picture to show a "attractive" or a "not attractive" celebrity?
 * The final model acheives only a ~80% accuracy classifying images on a validation set
 
+
+
+Created by Otto Bond
