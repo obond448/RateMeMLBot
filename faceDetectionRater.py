@@ -146,5 +146,5 @@ def rate_faces_save(imgfile, name="None"):
     
     
 if __name__ =="__main__": #this is to stop the main code running when this code is imported to another script
-    img = "c3e0vb.jpg"
+    img = "k1puewb6uyv31.jpg"
     rate_faces_save(img, "myimg.jpg")
