@@ -8,6 +8,16 @@ The bot is hosted on heroku and run automatically at specified times.
 
 ## File Guide
 
+RedditBot.py - File ran by Heroku. Retrieves images using praw and rates using faceDetectionRater
+faceDetectionRater.py - rate_faces_save method finds faces using openv2 calls run method which loads NN model and gets model output. Saves output as image.
+
+CelebImageFolder.py - Seperates images from CelebA dataset into folders as required for PyTorch model training.
+CelebAttractPretained.py - Generates trained model, modified code from pytorch online guide
+
+requirements.txt - File used by heroku to install python dependencies
+
+*.pt - PyTorch trained models
+/OldModels - Models not in use
 
 ## Interpretation of number output
 
